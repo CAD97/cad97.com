@@ -4,7 +4,9 @@
   "description": "",
   "main": "./www/main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lite": "lite-server",
+    "gulp": "gulp"
   },
   "author": "",
   "license": "UNLICENSED",
@@ -16,6 +18,7 @@
     "gulp-typescript": "^2.13.4",
     "gulp-uglify": "^1.5.3",
     "gulp-util": "^3.0.7",
+    "lite-server": "^2.2.0",
     "tsify": "^0.15.5",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
