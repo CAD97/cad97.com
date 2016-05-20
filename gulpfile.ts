@@ -25,7 +25,7 @@ export class Gulpfile {
     @Task("copy-html")
     copyHTML() {
         return gulp.src(["src/**/*.html"])
-                .pipe(gulp.dest("www"));
+                   .pipe(gulp.dest("www"));
     }
     
     @Task("build", ["clean", "copy-html"])
@@ -37,12 +37,12 @@ export class Gulpfile {
             cache: {},
             packageCache: {}
         }).plugin(tsify)
-            .bundle()
-            .pipe(source("bundle.js"))
-            .pipe(buffer())
-            .pipe(uglify())
-            .pipe(sourcemaps.write("./"))
-            .pipe(gulp.dest("www"));
+          .bundle()
+          .pipe(source("bundle.js"))
+          .pipe(buffer())
+          .pipe(uglify())
+          .pipe(sourcemaps.write("./"))
+          .pipe(gulp.dest("www"));
     }
     
     @Task("dev", ["clean", "copy-html"])
@@ -54,13 +54,13 @@ export class Gulpfile {
             cache: {},
             packageCache: {}
         }).plugin(tsify))
-            .bundle()
-            .pipe(source("bundle.js"))
-            .pipe(buffer())
-            .pipe(sourcemaps.init({loadMaps: true}))
-            .pipe(uglify())
-            .pipe(sourcemaps.write("./"))
-            .pipe(gulp.dest("www"));
+          .bundle()
+          .pipe(source("bundle.js"))
+          .pipe(buffer())
+          .pipe(sourcemaps.init({loadMaps: true}))
+          .pipe(uglify())
+          .pipe(sourcemaps.write("./"))
+          .pipe(gulp.dest("www"));
     }
     
 }
