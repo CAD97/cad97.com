@@ -5,7 +5,8 @@
         "noImplicitAny": true,
         "sourceMap": false,
         "rootDir": "src",
-        "outDir": "www"
+        "outDir": "www",
+        "experimentalDecorators": true
     },
     "exclude": [
         "node_modules",

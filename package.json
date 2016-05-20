@@ -13,13 +13,16 @@
   "private": true,
   "devDependencies": {
     "browserify": "^13.0.1",
+    "del": "^2.2.0",
     "gulp": "^3.9.1",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-typescript": "^2.13.4",
     "gulp-uglify": "^1.5.3",
     "gulp-util": "^3.0.7",
+    "gulpclass": "^0.1.1",
     "lite-server": "^2.2.0",
     "tsify": "^0.15.5",
+    "typescript": "^1.8.10",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.7.0"
