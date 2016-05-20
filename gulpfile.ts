@@ -12,7 +12,7 @@ var uglify = require("gulp-uglify");
 var sourcemaps = require("gulp-sourcemaps");
 var buffer = require("vinyl-buffer");
 
-@Gulpclass()
+@Gulpclass(gulp)
 export class Gulpfile {
     
     @Task("clean")
@@ -20,7 +20,7 @@ export class Gulpfile {
         return del(["www/**"], cb)
     }
     
-    @Task("copy-files")
+    @Task("copy-files", ["clean"])
     copyFiles() {
         return gulp.src(["src/**/*.html",
                          "src/**/*.css",
@@ -29,8 +29,9 @@ export class Gulpfile {
                    .pipe(gulp.dest("www"));
     }
     
-    @Task("build", ["clean", "copy-files"])
+    @Task("build", ["copy-files"])
     build() {
+        this.copyFiles();
         return browserify({
             basedir: '.',
             debug: false,
@@ -46,8 +47,9 @@ export class Gulpfile {
           .pipe(gulp.dest("www"));
     }
     
-    @Task("dev-build", ["clean", "copy-files"])
+    @Task("dev-build", ["copy-files"])
     dev() {
+        this.copyFiles();
         return browserify({
             basedir: '.',
             debug: true,
