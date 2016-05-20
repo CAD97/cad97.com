@@ -7,9 +7,7 @@ var del = require("del");
 var gulp = require("gulp");
 var browserify = require("browserify");
 var source = require("vinyl-source-stream");
-var watchify = require("watchify");
 var tsify = require("tsify");
-var gutil = require("gulp-util");
 var uglify = require("gulp-uglify");
 var sourcemaps = require("gulp-sourcemaps");
 var buffer = require("vinyl-buffer");
@@ -32,7 +30,7 @@ export class Gulpfile {
     build() {
         return browserify({
             basedir: '.',
-            debug: true,
+            debug: false,
             entries: ['src/main.ts'],
             cache: {},
             packageCache: {}
@@ -45,15 +43,15 @@ export class Gulpfile {
           .pipe(gulp.dest("www"));
     }
     
-    @Task("dev", ["clean", "copy-html"])
+    @Task("dev-build", ["clean", "copy-html"])
     dev() {
-        return watchify(browserify({
+        return browserify({
             basedir: '.',
             debug: true,
             entries: ['src/main.ts'],
             cache: {},
             packageCache: {}
-        }).plugin(tsify))
+        }).plugin(tsify)
           .bundle()
           .pipe(source("bundle.js"))
           .pipe(buffer())
