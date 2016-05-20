@@ -22,7 +22,10 @@ export class Gulpfile {
     
     @Task("copy-files")
     copyFiles() {
-        return gulp.src(["src/**/*.html", "src/**/*.css"])
+        return gulp.src(["src/**/*.html",
+                         "src/**/*.css",
+                         "src/**/*.ico",
+                         "src/**/*.png"])
                    .pipe(gulp.dest("www"));
     }
     
