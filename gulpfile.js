@@ -25,7 +25,7 @@ var watchedBrowserify = watchify(browserify(browserifyArgs).plugin(tsify));
 
 gulp.task("copy-html", () => {
     return gulp.src(paths.pages)
-        .pipe(gulp.dest("dist"));
+        .pipe(gulp.dest("www"));
 });
 
 gulp.task("lite-server", (cb) => {
