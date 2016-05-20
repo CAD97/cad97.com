@@ -20,13 +20,13 @@ export class Gulpfile {
         return del(["www/**"], cb)
     }
     
-    @Task("copy-html")
-    copyHTML() {
-        return gulp.src(["src/**/*.html"])
+    @Task("copy-files")
+    copyFiles() {
+        return gulp.src(["src/**/*.html", "src/**/*.css"])
                    .pipe(gulp.dest("www"));
     }
     
-    @Task("build", ["clean", "copy-html"])
+    @Task("build", ["clean", "copy-files"])
     build() {
         return browserify({
             basedir: '.',
@@ -43,7 +43,7 @@ export class Gulpfile {
           .pipe(gulp.dest("www"));
     }
     
-    @Task("dev-build", ["clean", "copy-html"])
+    @Task("dev-build", ["clean", "copy-files"])
     dev() {
         return browserify({
             basedir: '.',
