@@ -28,7 +28,8 @@ function makeDrawer(el: HTMLElement) {
 function makeNavigation(el: HTMLElement) {
     el.classList.add("mdl-navigation");
     el.innerHTML = 
-    `   <a class="mdl-navigation__link" href="#">Anden's Mountain</a>
+    `   <a class="mdl-navigation__link" href="/">Home</a>
+        <a class="mdl-navigation__link" href="#">Anden's Mountain</a>
         <a class="mdl-navigation__link" href="#">The Tower of Babble</a>
         <a class="mdl-navigation__link" href="#">Blog</a>
     `;
