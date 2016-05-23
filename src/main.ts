@@ -88,7 +88,7 @@ function makeCellCard(el: HTMLElement, width: number, shadow?: number) {
     componentHandler.upgradeElement(el);
 }
 
-[1,2,3,4,5,6,7,8,9,10,11,12].forEach(i=>
-    Array.prototype.forEach.call(document.getElementsByClassName(`cell-${i}`),
-                                 (el:HTMLElement) => makeCellCard(el, i, 4))
-);
+[1,2,3,4,5,6,7,8,9,10,11,12].forEach(i => {
+    var list = document.getElementsByClassName(`cell-${i}`);
+    while (list.length) { makeCellCard(list[0] as HTMLElement, i, 4); }
+});
