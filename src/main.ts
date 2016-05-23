@@ -46,7 +46,7 @@ function makeFooter(el: HTMLElement) {
             <ul class="mdl-mini-footer__link-list">
                 <li><a href="#">Technologies</a></li>
                 <li><a href="#">Contact Me</a></li>
-                <li><a href="#">Social Medias</a></li>
+                <li><a href="#">Social Media</a></li>
             </ul>
         </div>
         <div class="mdl-mini-footer__right-section">
