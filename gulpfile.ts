@@ -19,7 +19,7 @@ export class Gulpfile {
         return del(["www/**"], cb)
     }
     
-    @Task("copy-files", ["clean"])
+    @Task("copy-files")
     copyFiles() {
         return gulp.src(["src/**/*.html",
                          "src/**/*.css",
@@ -28,9 +28,8 @@ export class Gulpfile {
                    .pipe(gulp.dest("www"));
     }
     
-    @Task("build", ["copy-files"])
-    build() {
-        this.copyFiles();
+    @Task("transpile")
+    transpile() {
         return browserify({
             basedir: '.',
             debug: false,
@@ -43,6 +42,11 @@ export class Gulpfile {
           .pipe(buffer())
           .pipe(uglify())
           .pipe(gulp.dest("www"));
+    }
+    
+    @SequenceTask("build")
+    build() {
+        return ["clean", ["copy-files", "transpile"]];
     }
 }
 
