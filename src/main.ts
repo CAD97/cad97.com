@@ -55,7 +55,7 @@ function makeFooter(el: HTMLElement) {
                     <img alt="GitHub" style="border-width:0" height="32" src="/brands/github-32x32.png" />
                 </a></li>
                 <li><a href="https://www.youtube.com/c/cad97">
-                    <img alt="YouTube" style="border-width:0" height="32" src="/brands/youtube-32x32.png" />
+                    <img alt="YouTube" style="border-width:0" height="32" src="/brands/youtube-45x32.png" />
                 </a></li>
                 <li><button class="mdl-mini-footer__social-btn">Twitter</button></li>
                 <li><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
