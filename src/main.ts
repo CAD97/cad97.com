@@ -82,6 +82,7 @@ function makeCellCard(el: HTMLElement, width: number, shadow?: number) {
     
     title.classList.add("mdl-card__title");
     title.children[0].classList.add("mdl-card__title-text");
+    if (title.childElementCount > 1) title.children[1].classList.add("mdl-layout-spacer")
     body.classList.add("mdl-card__supporting-text");
 }
 
