@@ -10,3 +10,7 @@ main div.mdl-grid {
 .mdl-card__title a {
     text-decoration: unset;
 }
+
+code {
+    font-family: Courier New, Courier, monospace;
+}
