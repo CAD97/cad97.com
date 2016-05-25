@@ -14,3 +14,24 @@ main div.mdl-grid {
 code {
     font-family: Courier New, Courier, monospace;
 }
+
+.mdl-mini-footer {
+    padding: 8px 16px;
+}
+
+/* sticky footer */
+
+.mdl-layout__content {
+    display: -webkit-flex;
+    display:         flex;
+    
+    -ms-flex-flow: column nowrap;
+        flex-flow: column nowrap;
+}
+
+.mdl-layout__content > :not(.mdl-layout-spacer) {
+    -ms-flex: none;
+        flex: none;
+}
+
+/* end sticky footer */
