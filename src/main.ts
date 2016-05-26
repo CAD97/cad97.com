@@ -1,5 +1,5 @@
 
-/// <reference path="../typings/index.d.ts" />
+/// <reference path="../typings/globals/material-design-lite/index.d.ts" />
 
 function makeHeader(el: HTMLElement) {
     el.classList.add("mdl-layout__header", "mdl-shadow--8dp");
