@@ -4,6 +4,7 @@
 import { Gulpclass, Task, SequenceTask } from "gulpclass/Decorators";
 import * as gulp from "gulp";
 import * as ts from "gulp-typescript";
+import * as sourcemaps from "gulp-sourcemaps";
 import * as uglify from "gulp-uglify";
 import * as del from "del";
 
@@ -46,8 +47,10 @@ export class Gulpfile {
     @Task("transpile")
     transpile() {
         return gulp.src(paths.ts)
+                   .pipe(sourcemaps.init({}))
                    .pipe(ts(tsProject))
                    .pipe(uglify())
+                   .pipe(sourcemaps.write("./"))
                    .pipe(gulp.dest(paths.dest));
     }
     
