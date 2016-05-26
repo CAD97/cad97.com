@@ -1,14 +1,16 @@
 
+/// <reference path="typings/index.d.ts" />
+
 declare function require(name: string): any;
 
 import { Gulpclass, Task, SequenceTask } from "gulpclass/Decorators";
+import * as gulp from "gulp";
+import * as uglify from "gulp-uglify";
+import * as del from "del";
 
-var del = require("del");
-var gulp = require("gulp");
 var browserify = require("browserify");
 var source = require("vinyl-source-stream");
 var tsify = require("tsify");
-var uglify = require("gulp-uglify");
 var buffer = require("vinyl-buffer");
 
 var paths = {
@@ -24,7 +26,7 @@ export class Gulpfile {
     
     @Task("clean")
     clean(cb: Function) {
-        return del([paths.dest + '/**'], cb)
+        return del([paths.dest + '/**'], cb);
     }
     
     @Task("copy-html")

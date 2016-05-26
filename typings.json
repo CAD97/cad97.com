@@ -1,6 +1,13 @@
 {
-  "devDependencies": {},
+  "devDependencies": {
+    "del": "registry:npm/del#2.2.0+20160416211512",
+    "gulp": "registry:npm/gulp#3.8.0+20160211003958",
+    "source-map": "registry:npm/source-map#0.4.0+20160211003958"
+  },
   "globalDevDependencies": {
-    "material-design-lite": "registry:dt/material-design-lite#1.1.3+20160423150231"
+    "gulp-uglify": "registry:dt/gulp-uglify#0.0.0+20160316155526",
+    "material-design-lite": "registry:dt/material-design-lite#1.1.3+20160423150231",
+    "node": "registry:dt/node#6.0.0+20160524002506",
+    "uglify-js": "registry:dt/uglify-js#2.6.1+20160316155526"
   }
 }
