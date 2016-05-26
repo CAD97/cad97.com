@@ -1,12 +1,5 @@
 {
-    "injectChanges": false,
-    "files": [
-        "./www/**/*.{html,htm,css,js}"
-    ],
-    "watchOptions": {
-        "ignored": "node_modules"
-    },
-    "server": {
-        "baseDir": "./www"
-    }
+    "files": [ "./www/**/*.{html,htm,css,js}" ],
+    "watchOptions": { "ignored": "node_modules" },
+    "server": { "baseDir": "./www" }
 }
