@@ -3,13 +3,11 @@
 
 import { Gulpclass, Task, SequenceTask } from "gulpclass/Decorators";
 import * as gulp from "gulp";
+import * as ts from "gulp-typescript";
 import * as uglify from "gulp-uglify";
 import * as del from "del";
 
-var browserify = require("browserify");
-var source = require("vinyl-source-stream");
-var tsify = require("tsify");
-var buffer = require("vinyl-buffer");
+const tsProject = ts.createProject('tsconfig.json');
 
 var paths = {
     ts: ['src/main.ts'],
@@ -47,18 +45,10 @@ export class Gulpfile {
     
     @Task("transpile")
     transpile() {
-        return browserify({
-            basedir: '.',
-            debug: false,
-            entries: paths.ts,
-            cache: {},
-            packageCache: {}
-        }).plugin(tsify)
-          .bundle()
-          .pipe(source("bundle.js"))
-          .pipe(buffer())
-          .pipe(uglify())
-          .pipe(gulp.dest(paths.dest));
+        return gulp.src(paths.ts)
+                   .pipe(ts(tsProject))
+                   .pipe(uglify())
+                   .pipe(gulp.dest(paths.dest));
     }
     
     @Task("watch")
