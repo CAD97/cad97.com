@@ -37,6 +37,11 @@ function makeNavigation(el: HTMLElement) {
 }
 
 function makeFooter(el: HTMLElement) {
+    var par = el.parentElement;
+    var spacer = document.createElement("div");
+    spacer.classList.add("mdl-layout-spacer");
+    par.insertBefore(spacer, el);
+    
     el.classList.add("mdl-mini-footer");
     el.innerHTML =
     `   <div class="mdl-mini-footer__left-section">
