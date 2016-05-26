@@ -37,8 +37,8 @@ function makeNavigation(el: HTMLElement) {
 }
 
 function makeFooter(el: HTMLElement) {
-    var par = el.parentElement;
-    var spacer = document.createElement("div");
+    const par = el.parentElement;
+    const spacer = document.createElement("div");
     spacer.classList.add("mdl-layout-spacer");
     par.insertBefore(spacer, el);
     
@@ -82,8 +82,8 @@ function makeCellCard(el: HTMLElement, width: number, shadow?: number) {
     el.classList.add("mdl-cell", `mdl-cell--${width}-col`, "mdl-cell--8-col-tablet");
     if (shadow) el.classList.add(`mdl-shadow--${shadow}dp`);
     
-    var title = el.children[0] as HTMLElement;
-    var body = el.children[1] as HTMLElement;
+    const title = el.children[0] as HTMLElement;
+    const body = el.children[1] as HTMLElement;
     
     title.classList.add("mdl-card__title");
     title.children[0].classList.add("mdl-card__title-text");
@@ -94,6 +94,6 @@ function makeCellCard(el: HTMLElement, width: number, shadow?: number) {
 }
 
 [1,2,3,4,5,6,7,8,9,10,11,12].forEach(i => {
-    var list = document.getElementsByClassName(`cell-${i}`);
-    while (list.length) { makeCellCard(list[0] as HTMLElement, i, 4); }
+    const list = document.getElementsByClassName(`cell-${i}`);
+    while (list.length) makeCellCard(list[0] as HTMLElement, i, 4);
 });
