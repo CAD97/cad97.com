@@ -1,8 +1,6 @@
 
 /// <reference path="typings/index.d.ts" />
 
-declare function require(name: string): any;
-
 import { Gulpclass, Task, SequenceTask } from "gulpclass/Decorators";
 import * as gulp from "gulp";
 import * as uglify from "gulp-uglify";
