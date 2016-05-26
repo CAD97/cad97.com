@@ -11,6 +11,11 @@ main div.mdl-grid {
     text-decoration: unset;
 }
 
+.mdl-layout__title a {
+    text-decoration: unset;
+    color: inherit;
+}
+
 code {
     font-family: Courier New, Courier, monospace;
 }

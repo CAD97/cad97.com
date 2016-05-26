@@ -6,7 +6,7 @@ function makeHeader(el: HTMLElement) {
     el.innerHTML =
     `   <div class="mdl-layout-icon"></div>
         <div class="mdl-layout__header-row">
-            <span class="mdl-layout__title">CAD97</span>
+            <span class="mdl-layout__title"><a href="/">CAD97</a></span>
             <div class="mdl-layout-spacer"></div>
             <nav class="mdl-layout--large-screen-only"></nav>
         </div>
