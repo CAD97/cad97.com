@@ -79,7 +79,7 @@ makeFooter(document.getElementById("footer"));
 
 function makeCellCard(el: HTMLElement, width: number, shadow?: number) {
     el.classList.remove(`cell-${width}`);
-    el.classList.add("mdl-cell", `mdl-cell--${width}-col`, "mdl-cell--8-col-tablet");
+    el.classList.add("mdl-cell", "mdl-card", `mdl-cell--${width}-col`, "mdl-cell--8-col-tablet");
     if (shadow) el.classList.add(`mdl-shadow--${shadow}dp`);
     
     const title = el.children[0] as HTMLElement;
