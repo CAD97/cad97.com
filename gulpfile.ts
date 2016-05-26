@@ -11,21 +11,38 @@ var tsify = require("tsify");
 var uglify = require("gulp-uglify");
 var buffer = require("vinyl-buffer");
 
+var paths = {
+    ts: ['src/main.ts'],
+    html: 'src/**/*.html',
+    css: 'src/**/*.css',
+    img: ['src/**/*.ico', 'src/**/*.png'],
+    dest: 'www'
+}
+
 @Gulpclass(gulp)
 export class Gulpfile {
     
     @Task("clean")
     clean(cb: Function) {
-        return del(["www/**"], cb)
+        return del([paths.dest + '/**'], cb)
     }
     
-    @Task("copy-files")
-    copyFiles() {
-        return gulp.src(["src/**/*.html",
-                         "src/**/*.css",
-                         "src/**/*.ico",
-                         "src/**/*.png"])
-                   .pipe(gulp.dest("www"));
+    @Task("copy-html")
+    copyHTML() {
+        return gulp.src(paths.html)
+                   .pipe(gulp.dest(paths.dest));
+    }
+    
+    @Task("copy-css")
+    copyCSS() {
+        return gulp.src(paths.css)
+                   .pipe(gulp.dest(paths.dest));
+    }
+    
+    @Task("copy-img")
+    copyICO() {
+        return gulp.src(paths.img)
+                   .pipe(gulp.dest(paths.dest));
     }
     
     @Task("transpile")
@@ -33,7 +50,7 @@ export class Gulpfile {
         return browserify({
             basedir: '.',
             debug: false,
-            entries: ['src/main.ts'],
+            entries: paths.ts,
             cache: {},
             packageCache: {}
         }).plugin(tsify)
@@ -41,12 +58,35 @@ export class Gulpfile {
           .pipe(source("bundle.js"))
           .pipe(buffer())
           .pipe(uglify())
-          .pipe(gulp.dest("www"));
+          .pipe(gulp.dest(paths.dest));
+    }
+    
+    @Task("watch")
+    watch() {
+        gulp.watch(paths.ts, ['transpile']);
+        gulp.watch(paths.html, ['copy-html']);
+        gulp.watch(paths.css, ['copy-css']);
+        gulp.watch(paths.img, ['copy-img']);
+    }
+    
+    @SequenceTask("copy-static")
+    copyFiles() {
+        return [['copy-html', 'copy-css', 'copy-img']];
     }
     
     @SequenceTask("build")
     build() {
-        return ["clean", ["copy-files", "transpile"]];
+        return [["copy-static", "transpile"]];
+    }
+    
+    @SequenceTask("clean-build")
+    cleanBuild() {
+        return ["clean", "build"];
+    }
+    
+    @SequenceTask("start-dev")
+    startDev() {
+        return ['clean-build', 'watch'];
     }
 }
 
