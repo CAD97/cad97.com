@@ -29,9 +29,9 @@ function makeNavigation(el: HTMLElement) {
     el.classList.add("mdl-navigation");
     el.innerHTML =
     `   <a class="mdl-navigation__link" href="/">Home</a>
-        <a class="mdl-navigation__link" href="#">Anden's Mountain</a>
-        <a class="mdl-navigation__link" href="#">The Tower of Babble</a>
-        <a class="mdl-navigation__link" href="#">Blog</a>
+        <a class="mdl-navigation__link" href="/code/andens_mountain/">Anden's Mountain</a>
+        <a class="mdl-navigation__link" href="/code/tower_of_babble/">The Tower of Babble</a>
+        <a class="mdl-navigation__link" href="http://blog.cad97.com/">Blog</a>
     `;
     componentHandler.upgradeElement(el);
 }
@@ -49,9 +49,9 @@ function makeFooter(el: HTMLElement) {
                 Copyright &copy; 2015-2016
             </div>
             <ul class="mdl-mini-footer__link-list">
-                <li><a href="#">Technologies</a></li>
-                <li><a href="#">Contact Me</a></li>
-                <li><a href="#">Social Media</a></li>
+                <li><a href="/tech/">Technologies</a></li>
+                <li><a href="/contact/">Contact Me</a></li>
+                <li><a href="/social/">Social Media</a></li>
             </ul>
         </div>
         <div class="mdl-mini-footer__right-section">
