@@ -16,7 +16,7 @@ const paths = {
     css: "src/**/*.css",
     img: ["src/**/*.ico", "src/**/*.png"],
     dest: "www"
-}
+};
 
 @Gulpclass(gulp)
 export class Gulpfile {
