@@ -2,7 +2,7 @@
 /// <reference path="typings/index.d.ts" />
 
 import { Gulpclass, Task, SequenceTask } from "gulpclass/Decorators";
-import * as gulp from "gulp";
+import { Gulp } from "gulp";
 import * as ts from "gulp-typescript";
 import * as sourcemaps from "gulp-sourcemaps";
 import * as uglify from "gulp-uglify";
@@ -18,65 +18,76 @@ const paths = {
     dest: "www"
 };
 
-@Gulpclass(gulp)
+// noinspection JSUnusedGlobalSymbols
+@Gulpclass(Gulp)
 export class Gulpfile {
 
+    // noinspection JSMethodCanBeStatic
     @Task("clean")
     clean(cb: Function) {
         return del([paths.dest + "/**"], cb);
     }
 
+    // noinspection JSMethodCanBeStatic,JSUnusedGlobalSymbols
     @Task("copy-html")
     copyHTML() {
-        return gulp.src(paths.html)
-                   .pipe(gulp.dest(paths.dest));
+        return Gulp.src(paths.html)
+                   .pipe(Gulp.dest(paths.dest));
     }
 
+    // noinspection JSMethodCanBeStatic,JSUnusedGlobalSymbols
     @Task("copy-css")
     copyCSS() {
-        return gulp.src(paths.css)
-                   .pipe(gulp.dest(paths.dest));
+        return Gulp.src(paths.css)
+                   .pipe(Gulp.dest(paths.dest));
     }
 
+    // noinspection JSMethodCanBeStatic,JSUnusedGlobalSymbols
     @Task("copy-img")
     copyICO() {
-        return gulp.src(paths.img)
-                   .pipe(gulp.dest(paths.dest));
+        return Gulp.src(paths.img)
+                   .pipe(Gulp.dest(paths.dest));
     }
 
+    // noinspection JSMethodCanBeStatic
     @Task("transpile")
     transpile() {
-        return gulp.src(paths.ts)
+        return Gulp.src(paths.ts)
                    .pipe(sourcemaps.init({}))
                    .pipe(ts(tsProject))
                    .pipe(uglify())
                    .pipe(sourcemaps.write("./"))
-                   .pipe(gulp.dest(paths.dest));
+                   .pipe(Gulp.dest(paths.dest));
     }
 
+    // noinspection JSMethodCanBeStatic
     @Task("watch")
     watch() {
-        gulp.watch(paths.ts, ["transpile"]);
-        gulp.watch(paths.html, ["copy-html"]);
-        gulp.watch(paths.css, ["copy-css"]);
-        gulp.watch(paths.img, ["copy-img"]);
+        Gulp.watch(paths.ts, ["transpile"]);
+        Gulp.watch(paths.html, ["copy-html"]);
+        Gulp.watch(paths.css, ["copy-css"]);
+        Gulp.watch(paths.img, ["copy-img"]);
     }
 
+    // noinspection JSMethodCanBeStatic,JSUnusedGlobalSymbols
     @SequenceTask("copy-static")
     copyFiles() {
         return [["copy-html", "copy-css", "copy-img"]];
     }
 
+    // noinspection JSMethodCanBeStatic
     @SequenceTask("build")
     build() {
         return [["copy-static", "transpile"]];
     }
 
+    // noinspection JSMethodCanBeStatic,JSUnusedGlobalSymbols
     @SequenceTask("clean-build")
     cleanBuild() {
         return ["clean", "build"];
     }
 
+    // noinspection JSMethodCanBeStatic,JSUnusedGlobalSymbols
     @SequenceTask("start-dev")
     startDev() {
         return ["clean-build", "watch"];
