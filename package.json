@@ -11,6 +11,7 @@
   "license": "UNLICENSED",
   "private": true,
   "devDependencies": {
+    "chokidar": "^1.6.0",
     "del": "^2.2.1",
     "gulp": "^3.9.1",
     "gulp-mustache": "^2.2.0",
@@ -20,6 +21,8 @@
     "gulp-util": "^3.0.7",
     "gulpclass": "^0.1.1",
     "lite-server": "^2.2.2",
-    "typescript": "^1.8.10"
+    "typescript": "^1.8.10",
+    "undertaker": "^1.0.0",
+    "vinyl-fs": "^2.4.3"
   }
 }
