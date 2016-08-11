@@ -1,8 +1,7 @@
-
 /// <reference path="typings/index.d.ts" />
 
-import { Gulpclass, Task, SequenceTask } from "gulpclass/Decorators";
-import * as Gulp from "gulp";
+import {Gulpclass, Task, SequenceTask} from "gulpclass/Decorators";
+import * as gulp from "gulp";
 import * as typescript from "gulp-typescript";
 import * as sourcemaps from "gulp-sourcemaps";
 import * as uglify from "gulp-uglify";
@@ -24,7 +23,7 @@ const paths = {
 };
 
 // noinspection JSUnusedGlobalSymbols
-@Gulpclass(Gulp)
+@Gulpclass(gulp)
 export class Gulpfile {
 
     // noinspection JSMethodCanBeStatic
@@ -36,45 +35,45 @@ export class Gulpfile {
     // noinspection JSMethodCanBeStatic,JSUnusedGlobalSymbols
     @Task("serve-html")
     serveHTML() {
-        return Gulp.src(paths.mustache.sources)
-                   .pipe(mustache(paths.mustache.json, {extension: ".html"}) as ReadWriteStream)
-                   .pipe(mustache(paths.mustache.json, {extension: ".html"}) as ReadWriteStream)
-                   // mustache twice because I need to nest the templates
-                   .pipe(Gulp.dest(paths.dest));
+        return gulp.src(paths.mustache.sources)
+            .pipe(mustache(paths.mustache.json, {extension: ".html"}) as ReadWriteStream)
+            // mustache twice because I need to nest the templates
+            .pipe(mustache(paths.mustache.json, {extension: ".html"}) as ReadWriteStream)
+            .pipe(gulp.dest(paths.dest));
     }
 
     // noinspection JSMethodCanBeStatic,JSUnusedGlobalSymbols
     @Task("copy-css")
     copyCSS() {
-        return Gulp.src(paths.css)
-                   .pipe(Gulp.dest(paths.dest));
+        return gulp.src(paths.css)
+            .pipe(gulp.dest(paths.dest));
     }
 
     // noinspection JSMethodCanBeStatic,JSUnusedGlobalSymbols
     @Task("copy-img")
     copyICO() {
-        return Gulp.src(paths.img)
-                   .pipe(Gulp.dest(paths.dest));
+        return gulp.src(paths.img)
+            .pipe(gulp.dest(paths.dest));
     }
 
     // noinspection JSMethodCanBeStatic
     @Task("transpile")
     transpile() {
-        return Gulp.src(paths.ts)
-                   .pipe(sourcemaps.init({}))
-                   .pipe(typescript(tsProject) as ReadWriteStream)
-                   .pipe(uglify() as ReadWriteStream)
-                   .pipe(sourcemaps.write("./"))
-                   .pipe(Gulp.dest(paths.dest));
+        return gulp.src(paths.ts)
+            .pipe(sourcemaps.init({}))
+            .pipe(typescript(tsProject) as ReadWriteStream)
+            .pipe(uglify() as ReadWriteStream)
+            .pipe(sourcemaps.write("./"))
+            .pipe(gulp.dest(paths.dest));
     }
 
     // noinspection JSMethodCanBeStatic
     @Task("watch")
     watch() {
-        Gulp.watch(paths.ts, ["transpile"]);
-        Gulp.watch([paths.mustache.sources, paths.mustache.json], ["serve-html"]);
-        Gulp.watch(paths.css, ["copy-css"]);
-        Gulp.watch(paths.img, ["copy-img"]);
+        gulp.watch(paths.ts, ["transpile"]);
+        gulp.watch([paths.mustache.sources, paths.mustache.json], ["serve-html"]);
+        gulp.watch(paths.css, ["copy-css"]);
+        gulp.watch(paths.img, ["copy-img"]);
     }
 
     // noinspection JSMethodCanBeStatic,JSUnusedGlobalSymbols

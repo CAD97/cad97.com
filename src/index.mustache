@@ -1,91 +1,107 @@
 <!DOCTYPE html>
 
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>CAD97</title>
-        
-        <!-- Material Design Lite -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-        <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.deep_purple-blue.min.css" />
-        <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
-        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css" />
-        
-        <!-- Favicon via Favic-o-matic obsessive preset -->
-        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://cad97.com/ico/apple-touch-icon-144x144.png" />
-        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="http://cad97.com/ico/apple-touch-icon-152x152.png" />
-        <link rel="icon" type="image/png" href="http://cad97.com/ico/favicon-32x32.png" sizes="32x32" />
-        <link rel="icon" type="image/png" href="http://cad97.com/ico/favicon-16x16.png" sizes="16x16" />
-        
-        <!-- My Links -->
-        <!--suppress HtmlUnknownTarget -->
-        <link rel="stylesheet" href="/style.css" type="text/css" />
-        <!--suppress HtmlUnknownTarget -->
-        <script defer src="/main.js"></script>
-    </head>
-    <body>
-        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-            {{{header}}}
-            {{{drawer}}}
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAD97</title>
 
-            <main class="mdl-layout__content">
-                <div class="mdl-grid">
-                    
-                    <div class="cell-12" id="About">
-                        <div><h2>About Me</h2></div>
-                        <div>
-                            <p>My name is Christopher Durham, though I usually go by my screen name, <code>CAD97</code>, on the internet. I'm a college student at Furman University,
-                                studying for a dual major with a B.S. in Computer Science and a B.A. in Music. I like to create things, and this is a central repository where these
-                                things end up. I do everything from single-webpage mini-applets to a decently-sized game built with Unity, and a few musical endeavors have made it
-                                onto this site as well.
-                            </p>
-                        </div>
-                    </div>
-                    
-                    <a class="cell-4" href="./code/andens_mountain/" id="Anden">
-                        <div><h2>Anden's Mountain</h2></div>
-                        <div>
-                            <p>Anden's Mountain is a text-based choose-your-own-adventure style game. It is written in Java and is sort of my pet project (that will hopefully be
-                                finished some day). Shaun does the story writing, and I do the game logic. Also, because its a data-driven game, AM is <em>technically</em> an
-                                engine, and as such there is the sibling AM Text Adventure Creation Tool. The source for AM and TACT are available on GitHub, and eventually
-                                you'll be able to play (at least some of) the adventure Shaun has written for me.
-                            </p>
-                            <p>Honestly thank you so much Shaun you've written a completely servicable plot and world and the engine can't even take any of it yet.</p>
-                        </div>
-                    </a>
-                    
-                    <a class="cell-4" href="./code/tower_of_babble/" id="Babble">
-                        <div><h2>The Tower of Babble</h2></div>
-                        <div>
-                            <p>The Tower of Babble is a bit more complicated. My internet friend group got the name "The Tower of Babble" at some point, and then, one day,
-                                someone just said "We should try making a game!" For some reason, I agreed. Thus, The Tower of Babble is now an in-progress top-down 2D
-                                semi-isometric mystery-dungeon-inspired procedurally-generated tower-climbing dungeon crawler written in Unity3D.
-                            </p>
-                            <p>By request of the other members of the four person team, the game is closed-source for the time being. However, you can read some about it here,
-                                and I might rant about it on my blog sometimes.
-                            </p>
-                        </div>
-                    </a>
-                    
-                    <a class="cell-4" href="http://blog.cad97.com" id="Blog">
-                        <div><h2>Blog</h2></div>
-                        <div>
-                            <p>It's mostly just reblogs and me being an idiot.</p>
-                            <p>I set up a Tumblr and I try to use it sometimes. I'm also working on setting up a <span>secret side-blog, <!-- If you are nerdy enough to check
-                               the HTML for hints, then here, have the url: http://another-chara-and-frisk.tumblr.com/ --></span> so there's that to look for. There's probably
-                               a clue somewhere on this page.
-                            </p>
-                            <p>But I guess check out the blog if you want to see me talk into the ether. I mean that's why blogs exist, right? Oh, and you might get knowledge
-                                about my future projects before anyone else. If I feel like shouting it into the internet, anyway.
-                            </p>
-                        </div>
-                    </a>
-                    
+    <!-- Material Design Lite -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+    <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.deep_purple-blue.min.css"/>
+    <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css"/>
+
+    <!-- Favicon via Favic-o-matic obsessive preset -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://cad97.com/ico/apple-touch-icon-144x144.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="http://cad97.com/ico/apple-touch-icon-152x152.png"/>
+    <link rel="icon" type="image/png" href="http://cad97.com/ico/favicon-32x32.png" sizes="32x32"/>
+    <link rel="icon" type="image/png" href="http://cad97.com/ico/favicon-16x16.png" sizes="16x16"/>
+
+    <!-- My Links -->
+    <!--suppress HtmlUnknownTarget -->
+    <link rel="stylesheet" href="/style.css" type="text/css"/>
+    <!--suppress HtmlUnknownTarget -->
+    <script defer src="/main.js"></script>
+</head>
+<body>
+
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    {{{header}}}
+    {{{drawer}}}
+
+    <main class="mdl-layout__content">
+        <div class="mdl-grid">
+
+            <div class="cell-12" id="About">
+                <div><h2>About Me</h2></div>
+                <div>
+                    <p>My name is Christopher Durham, though I usually go by my screen name, <code>CAD97</code>, on the
+                        internet. I'm a college student at Furman University,
+                        studying for a dual major with a B.S. in Computer Science and a B.A. in Music. I like to create
+                        things, and this is a central repository where these
+                        things end up. I do everything from single-webpage mini-applets to a decently-sized game built
+                        with Unity, and a few musical endeavors have made it
+                        onto this site as well.
+                    </p>
                 </div>
-                
-                {{{footer}}}
-            </main>
+            </div>
+
+            <a class="cell-4" href="./code/andens_mountain/" id="Anden">
+                <div><h2>Anden's Mountain</h2></div>
+                <div>
+                    <p>Anden's Mountain is a text-based choose-your-own-adventure style game. It is written in Java and
+                        is sort of my pet project (that will hopefully be
+                        finished some day). Shaun does the story writing, and I do the game logic. Also, because its a
+                        data-driven game, AM is <em>technically</em> an
+                        engine, and as such there is the sibling AM Text Adventure Creation Tool. The source for AM and
+                        TACT are available on GitHub, and eventually
+                        you'll be able to play (at least some of) the adventure Shaun has written for me.
+                    </p>
+                    <p>Honestly thank you so much Shaun you've written a completely servicable plot and world and the
+                        engine can't even take any of it yet.</p>
+                </div>
+            </a>
+
+            <a class="cell-4" href="./code/tower_of_babble/" id="Babble">
+                <div><h2>The Tower of Babble</h2></div>
+                <div>
+                    <p>The Tower of Babble is a bit more complicated. My internet friend group got the name "The Tower
+                        of Babble" at some point, and then, one day,
+                        someone just said "We should try making a game!" For some reason, I agreed. Thus, The Tower of
+                        Babble is now an in-progress top-down 2D
+                        semi-isometric mystery-dungeon-inspired procedurally-generated tower-climbing dungeon crawler
+                        written in Unity3D.
+                    </p>
+                    <p>By request of the other members of the four person team, the game is closed-source for the time
+                        being. However, you can read some about it here,
+                        and I might rant about it on my blog sometimes.
+                    </p>
+                </div>
+            </a>
+
+            <a class="cell-4" href="http://blog.cad97.com" id="Blog">
+                <div><h2>Blog</h2></div>
+                <div>
+                    <p>It's mostly just reblogs and me being an idiot.</p>
+                    <p>I set up a Tumblr and I try to use it sometimes. I'm also working on setting up a <span>secret side-blog, <!-- If you are nerdy enough to check
+                               the HTML for hints, then here, have the url: http://another-chara-and-frisk.tumblr.com/ --></span>
+                        so there's that to look for. There's probably
+                        a clue somewhere on this page.
+                    </p>
+                    <p>But I guess check out the blog if you want to see me talk into the ether. I mean that's why blogs
+                        exist, right? Oh, and you might get knowledge
+                        about my future projects before anyone else. If I feel like shouting it into the internet,
+                        anyway.
+                    </p>
+                </div>
+            </a>
+
         </div>
-    </body>
+
+        {{{footer}}}
+    </main>
+</div>
+
+</body>
 </html>
