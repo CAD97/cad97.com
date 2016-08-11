@@ -2,17 +2,22 @@
 /// <reference path="typings/index.d.ts" />
 
 import { Gulpclass, Task, SequenceTask } from "gulpclass/Decorators";
-import { Gulp } from "gulp";
-import * as ts from "gulp-typescript";
+import * as Gulp from "gulp";
+import * as typescript from "gulp-typescript";
 import * as sourcemaps from "gulp-sourcemaps";
 import * as uglify from "gulp-uglify";
+import * as mustache from "gulp-mustache";
 import * as del from "del";
+import ReadWriteStream = NodeJS.ReadWriteStream;
 
-const tsProject = ts.createProject("tsconfig.json");
+const tsProject = typescript.createProject("tsconfig.json");
 
 const paths = {
     ts: ["src/main.ts"],
-    html: "src/**/*.html",
+    mustache: {
+        sources: "src/**/*.mustache",
+        json: "src/mustache.json"
+    },
     css: "src/**/*.css",
     img: ["src/**/*.ico", "src/**/*.png"],
     dest: "www"
@@ -29,9 +34,12 @@ export class Gulpfile {
     }
 
     // noinspection JSMethodCanBeStatic,JSUnusedGlobalSymbols
-    @Task("copy-html")
-    copyHTML() {
-        return Gulp.src(paths.html)
+    @Task("serve-html")
+    serveHTML() {
+        return Gulp.src(paths.mustache.sources)
+                   .pipe(mustache(paths.mustache.json, {extension: ".html"}) as ReadWriteStream)
+                   .pipe(mustache(paths.mustache.json, {extension: ".html"}) as ReadWriteStream)
+                   // mustache twice because I need to nest the templates
                    .pipe(Gulp.dest(paths.dest));
     }
 
@@ -54,8 +62,8 @@ export class Gulpfile {
     transpile() {
         return Gulp.src(paths.ts)
                    .pipe(sourcemaps.init({}))
-                   .pipe(ts(tsProject))
-                   .pipe(uglify())
+                   .pipe(typescript(tsProject) as ReadWriteStream)
+                   .pipe(uglify() as ReadWriteStream)
                    .pipe(sourcemaps.write("./"))
                    .pipe(Gulp.dest(paths.dest));
     }
@@ -64,7 +72,7 @@ export class Gulpfile {
     @Task("watch")
     watch() {
         Gulp.watch(paths.ts, ["transpile"]);
-        Gulp.watch(paths.html, ["copy-html"]);
+        Gulp.watch([paths.mustache.sources, paths.mustache.json], ["serve-html"]);
         Gulp.watch(paths.css, ["copy-css"]);
         Gulp.watch(paths.img, ["copy-img"]);
     }
@@ -72,7 +80,7 @@ export class Gulpfile {
     // noinspection JSMethodCanBeStatic,JSUnusedGlobalSymbols
     @SequenceTask("copy-static")
     copyFiles() {
-        return [["copy-html", "copy-css", "copy-img"]];
+        return [["serve-html", "copy-css", "copy-img"]];
     }
 
     // noinspection JSMethodCanBeStatic
