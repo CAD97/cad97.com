@@ -7,6 +7,7 @@ import * as sourcemaps from "gulp-sourcemaps";
 import * as uglify from "gulp-uglify";
 import * as mustache from "gulp-mustache";
 import * as del from "del";
+import * as fs from "fs";
 import ReadWriteStream = NodeJS.ReadWriteStream;
 
 const tsProject = typescript.createProject("tsconfig.json");
@@ -15,7 +16,13 @@ const paths = {
     ts: ["src/main.ts"],
     mustache: {
         sources: "src/**/*.mustache",
-        json: "src/mustache.json"
+        partials: {
+            "drawer": fs.readFileSync("mustache_tags/drawer.mustache"),
+            "footer": fs.readFileSync("mustache_tags/footer.mustache"),
+            "header": fs.readFileSync("mustache_tags/header.mustache"),
+            "htmlhead": fs.readFileSync("mustache_tags/htmlhead.mustache"),
+            "navigation": fs.readFileSync("mustache_tags/navigation.mustache")
+        }
     },
     css: "src/**/*.css",
     img: ["src/**/*.ico", "src/**/*.png"],
@@ -36,9 +43,9 @@ export class Gulpfile {
     @Task("serve-html")
     serveHTML() {
         return gulp.src(paths.mustache.sources)
-            .pipe(mustache(paths.mustache.json, {extension: ".html"}) as ReadWriteStream)
-            // mustache twice because I need to nest the templates
-            .pipe(mustache(paths.mustache.json, {extension: ".html"}) as ReadWriteStream)
+            .pipe(mustache(paths.mustache.partials, {extension: ".html"}) as ReadWriteStream)
+            // mustache twice so I can nest tags
+            .pipe(mustache(paths.mustache.partials, {extension: ".html"}) as ReadWriteStream)
             .pipe(gulp.dest(paths.dest));
     }
 
