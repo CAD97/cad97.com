@@ -7,6 +7,7 @@ import * as mustache from "mustache";
 import * as del from "del";
 import * as runSequence from "run-sequence";
 import * as fs from "fs";
+import * as htmlmin from "gulp-htmlmin";
 import ReadWriteStream = NodeJS.ReadWriteStream;
 
 const tsProject = typescript.createProject("tsconfig.json");
@@ -47,6 +48,12 @@ gulp.task("clean", (cb) => {
 gulp.task("serve-html", () => {
     return gulp.src(paths.mustache.sources)
         .pipe(mustachePipe(view, {extension: ".html"}) as ReadWriteStream)
+        .pipe(htmlmin({
+            collapseWhitespace: true,
+            conservativeCollapse: true,
+            preserveLineBreaks: true,
+            removeComments: true,
+        }))
         .pipe(gulp.dest(paths.dest));
 });
 
