@@ -2,7 +2,8 @@ import * as gulp from "gulp";
 import * as typescript from "gulp-typescript";
 import * as sourcemaps from "gulp-sourcemaps";
 import * as uglify from "gulp-uglify";
-import * as mustache from "gulp-mustache";
+import * as mustachePipe from "gulp-mustache";
+import * as mustache from "mustache";
 import * as del from "del";
 import * as runSequence from "run-sequence";
 import * as fs from "fs";
@@ -15,11 +16,11 @@ const paths = {
     mustache: {
         sources: "src/**/*.mustache",
         fragments: {
-            "drawer": fs.readFileSync("fragments/drawer.mustache"),
-            "footer": fs.readFileSync("fragments/footer.mustache"),
-            "header": fs.readFileSync("fragments/header.mustache"),
-            "htmlhead": fs.readFileSync("fragments/htmlhead.mustache"),
-            "navigation": fs.readFileSync("fragments/navigation.mustache")
+            "drawer": "fragments/drawer.mustache",
+            "footer": "fragments/footer.mustache",
+            "header": "fragments/header.mustache",
+            "htmlhead": "fragments/htmlhead.mustache",
+            "navigation": "fragments/navigation.mustache"
         }
     },
     css: "src/**/*.css",
@@ -27,6 +28,17 @@ const paths = {
     dest: "www"
 };
 
+const view = (() => {
+    const temp1 = {};
+    Object.keys(paths.mustache.fragments).forEach((key) => {
+        temp1[key] = fs.readFileSync(paths.mustache.fragments[key]).toString();
+    });
+    const temp2 = {};
+    Object.keys(temp1).forEach((key) => {
+        temp2[key] = mustache.render(temp1[key], temp1);
+    });
+    return temp2;
+})();
 
 gulp.task("clean", (cb) => {
     return del([paths.dest + "/**"], cb);
@@ -34,9 +46,7 @@ gulp.task("clean", (cb) => {
 
 gulp.task("serve-html", () => {
     return gulp.src(paths.mustache.sources)
-        .pipe(mustache(paths.mustache.fragments, {extension: ".html"}) as ReadWriteStream)
-        // mustache twice so I can nest tags
-        .pipe(mustache(paths.mustache.fragments, {extension: ".html"}) as ReadWriteStream)
+        .pipe(mustachePipe(view, {extension: ".html"}) as ReadWriteStream)
         .pipe(gulp.dest(paths.dest));
 });
 
@@ -61,8 +71,7 @@ gulp.task("transpile", () => {
 
 gulp.task("watch", () => {
     gulp.watch(paths.ts, ["transpile"]);
-    gulp.watch([paths.mustache.sources], ["serve-html"]);
-    // TODO: watch paths.mustache.fragments
+    gulp.watch([paths.mustache.sources].concat(Object.keys(paths.mustache.fragments).map((key) => paths.mustache.fragments[key])), ["serve-html"]);
     gulp.watch(paths.css, ["copy-css"]);
     gulp.watch(paths.img, ["copy-img"]);
 });
