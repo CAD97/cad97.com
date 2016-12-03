@@ -1,16 +1,15 @@
 {
-    "compilerOptions": {
-        "module": "commonjs",
-        "target": "es5",
-        "noImplicitAny": true,
-        "sourceMap": true,
-        "rootDir": "src",
-        "outDir": "www",
-        "experimentalDecorators": true
-    },
-    "exclude": [
-        "node_modules",
-        "typings",
-        "www"
-    ]
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "noImplicitAny": true,
+    "sourceMap": true,
+    "rootDir": "src",
+    "outDir": "www"
+  },
+  "exclude": [
+    "node_modules",
+    "typings",
+    "www"
+  ]
 }
