@@ -5,11 +5,9 @@
     "noImplicitAny": true,
     "sourceMap": true,
     "rootDir": "src",
-    "outDir": "www"
-  },
-  "exclude": [
-    "node_modules",
-    "typings",
-    "www"
-  ]
+    "outDir": "www",
+    "strictNullChecks": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true
+  }
 }

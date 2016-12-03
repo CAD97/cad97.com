@@ -1,4 +1,3 @@
-/// <reference path="../typings/globals/material-design-lite/index.d.ts" />
 
 function makeCellCard(el: HTMLElement, width: number, shadow?: number) {
     el.classList.remove(`cell-${width}`);
