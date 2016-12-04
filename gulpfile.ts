@@ -32,7 +32,7 @@ const paths = {
 };
 
 function view() {
-    const view: { [id: string]: any } = {};
+    const view: { [id: string]: string } = {};
     Object.keys(paths.mustache.fragments).forEach((key) => {
         view[key] = fs.readFileSync(paths.mustache.fragments[key]).toString();
     });
