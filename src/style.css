@@ -16,6 +16,10 @@ main div.mdl-grid {
     color: inherit;
 }
 
+.mdl-layout__header {
+    margin-bottom: 1em;
+}
+
 code {
     font-family: Courier New, Courier, monospace;
 }
