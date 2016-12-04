@@ -30,7 +30,7 @@ const paths = {
     dest: "www"
 };
 
-const view = (() => {
+function view() {
     const view = {};
     Object.keys(paths.mustache.fragments).forEach((key) => {
         view[key] = fs.readFileSync(paths.mustache.fragments[key]).toString();
@@ -41,7 +41,7 @@ const view = (() => {
     const jsonViews = paths.mustache.json.map((path) => JSON.parse(fs.readFileSync(path).toString()));
     jsonViews.forEach((jsonView) => Object.keys(jsonView).forEach((key) => view[key] = jsonView[key]));
     return view;
-})();
+}
 
 gulp.task("clean", (cb) => {
     return del([paths.dest + "/**"], cb);
@@ -49,7 +49,7 @@ gulp.task("clean", (cb) => {
 
 gulp.task("serve-html", () => {
     return gulp.src(paths.mustache.sources)
-        .pipe(mustachePipe(view, {extension: ".html"}) as ReadWriteStream)
+        .pipe(mustachePipe(view(), {extension: ".html"}) as ReadWriteStream)
         .pipe(htmlmin({
             collapseWhitespace: true,
             conservativeCollapse: true,
@@ -79,17 +79,23 @@ gulp.task("transpile", () => {
 });
 
 gulp.task("watch", () => {
-    gulp.watch(paths.ts, ["transpile"]);
-    gulp.watch(paths.mustache.json.concat(paths.mustache.sources), ["serve-html"]);
-    gulp.watch(Object.keys(paths.mustache.fragments).map((key) => paths.mustache.fragments[key]), ["serve-html"]);
-    gulp.watch(paths.css, ["copy-css"]);
-    gulp.watch(paths.img, ["copy-img"]);
+    return [
+        gulp.watch(paths.ts, ["transpile"]),
+        gulp.watch(paths.mustache.json.concat(paths.mustache.sources), ["serve-html"]),
+        gulp.watch(Object.keys(paths.mustache.fragments).map((key) => paths.mustache.fragments[key]), ["serve-html"]),
+        gulp.watch(paths.css, ["copy-css"]),
+        gulp.watch(paths.img, ["copy-img"])
+    ];
 });
 
 gulp.task("copy-static", ["serve-html", "copy-css", "copy-img"]);
 
 gulp.task("build", ["copy-static", "transpile"]);
 
-gulp.task("clean-build", (cb) => runSequence("clean", "build", cb));
+gulp.task("clean-build", (cb) => {
+    runSequence("clean", "build", cb);
+});
 
-gulp.task("start-dev", (cb) => runSequence("clean-build", "watch", cb));
+gulp.task("start-dev", (cb) => {
+    runSequence("clean-build", "watch", cb);
+});

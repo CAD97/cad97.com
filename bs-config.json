@@ -3,7 +3,7 @@
     "./www/**/*.{html,htm,css,js}"
   ],
   "watchOptions": {
-    "ignored": "node_modules"
+    "ignored": "*.{mustache,ts}"
   },
   "server": {
     "baseDir": "./www"
