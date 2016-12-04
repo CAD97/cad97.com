@@ -3,14 +3,6 @@ main div.mdl-grid {
     max-width: 1024px;
 }
 
-.mdl-grid a.mdl-cell {
-    text-decoration: unset;
-}
-
-.mdl-card__title a {
-    text-decoration: unset;
-}
-
 .mdl-layout__title a {
     text-decoration: unset;
     color: inherit;
