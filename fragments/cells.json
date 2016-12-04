@@ -1,0 +1,5 @@
+{
+  "cell-small": "mdl-cell mdl-cell--1-col mdl-cell--4-col-tablet mdl-cell--2-col-phone",
+  "cell-medium": "mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-cell-4-col-phone",
+  "cell-large": "mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell-4-col-phone"
+}

@@ -13,16 +13,17 @@ import ReadWriteStream = NodeJS.ReadWriteStream;
 const tsProject = typescript.createProject("tsconfig.json");
 
 const paths = {
-    ts: ["src/main.ts"],
+    ts: [],
     mustache: {
         sources: "src/**/*.mustache",
         fragments: {
-            "drawer": "fragments/drawer.mustache",
-            "footer": "fragments/footer.mustache",
-            "header": "fragments/header.mustache",
-            "htmlhead": "fragments/htmlhead.mustache",
-            "navigation": "fragments/navigation.mustache"
-        }
+            "mdl-drawer": "fragments/mdl-drawer.mustache",
+            "mdl-footer": "fragments/mdl-footer.mustache",
+            "mdl-header": "fragments/mdl-header.mustache",
+            "html-head": "fragments/html-head.mustache",
+            "mdl-navigation": "fragments/mdl-navigation.mustache"
+        },
+        json: ["fragments/cells.json"]
     },
     css: "src/**/*.css",
     img: ["src/**/*.ico", "src/**/*.png"],
@@ -30,15 +31,16 @@ const paths = {
 };
 
 const view = (() => {
-    const temp1 = {};
+    const view = {};
     Object.keys(paths.mustache.fragments).forEach((key) => {
-        temp1[key] = fs.readFileSync(paths.mustache.fragments[key]).toString();
+        view[key] = fs.readFileSync(paths.mustache.fragments[key]).toString();
     });
-    const temp2 = {};
-    Object.keys(temp1).forEach((key) => {
-        temp2[key] = mustache.render(temp1[key], temp1);
+    Object.keys(view).forEach((key) => {
+        view[key] = mustache.render(view[key], view);
     });
-    return temp2;
+    const jsonViews = paths.mustache.json.map((path) => JSON.parse(fs.readFileSync(path).toString()));
+    jsonViews.forEach((jsonView) => Object.keys(jsonView).forEach((key) => view[key] = jsonView[key]));
+    return view;
 })();
 
 gulp.task("clean", (cb) => {
@@ -78,7 +80,8 @@ gulp.task("transpile", () => {
 
 gulp.task("watch", () => {
     gulp.watch(paths.ts, ["transpile"]);
-    gulp.watch([paths.mustache.sources].concat(Object.keys(paths.mustache.fragments).map((key) => paths.mustache.fragments[key])), ["serve-html"]);
+    gulp.watch(paths.mustache.json.concat(paths.mustache.sources), ["serve-html"]);
+    gulp.watch(Object.keys(paths.mustache.fragments).map((key) => paths.mustache.fragments[key]), ["serve-html"]);
     gulp.watch(paths.css, ["copy-css"]);
     gulp.watch(paths.img, ["copy-img"]);
 });

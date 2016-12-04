@@ -29,14 +29,15 @@ code {
 .mdl-layout__content {
     display: -webkit-flex;
     display:         flex;
-    
-    -ms-flex-flow: column nowrap;
-        flex-flow: column nowrap;
+
+    -webkit-flex-flow: column nowrap;
+            flex-flow: column nowrap;
 }
 
 .mdl-layout__content > :not(.mdl-layout-spacer) {
-    -ms-flex: none;
-        flex: none;
+    -webkit-flex: none;
+        -ms-flex: none;
+            flex: none;
 }
 
 /* end sticky footer */
