@@ -13,7 +13,10 @@ main div.mdl-grid {
 }
 
 code {
-    font-family: Courier New, Courier, monospace;
+    font-family: "Fira Code", monospace;
+    font-feature-settings: "calt" 1;
+    -webkit-font-variant-ligatures: contextual;
+            font-variant-ligatures: contextual;
 }
 
 .mdl-mini-footer {

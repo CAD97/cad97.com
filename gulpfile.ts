@@ -9,6 +9,7 @@ import * as runSequence from "run-sequence";
 import * as fs from "fs";
 import * as htmlmin from "gulp-htmlmin";
 import ReadWriteStream = NodeJS.ReadWriteStream;
+import TaskCallback = gulp.TaskCallback;
 
 const tsProject = typescript.createProject("tsconfig.json");
 
@@ -31,7 +32,7 @@ const paths = {
 };
 
 function view() {
-    const view = {};
+    const view: { [id: string]: any } = {};
     Object.keys(paths.mustache.fragments).forEach((key) => {
         view[key] = fs.readFileSync(paths.mustache.fragments[key]).toString();
     });
@@ -43,7 +44,7 @@ function view() {
     return view;
 }
 
-gulp.task("clean", (cb) => {
+gulp.task("clean", (cb: TaskCallback) => {
     return del([paths.dest + "/**"], cb);
 });
 
@@ -92,10 +93,10 @@ gulp.task("copy-static", ["serve-html", "copy-css", "copy-img"]);
 
 gulp.task("build", ["copy-static", "transpile"]);
 
-gulp.task("clean-build", (cb) => {
+gulp.task("clean-build", (cb: TaskCallback) => {
     runSequence("clean", "build", cb);
 });
 
-gulp.task("start-dev", (cb) => {
+gulp.task("start-dev", (cb: TaskCallback) => {
     runSequence("clean-build", "watch", cb);
 });
