@@ -23,6 +23,20 @@ code {
     padding: 8px 16px;
 }
 
+a.mdl-card {
+    -webkit-transition: box-shadow 0.2s ease;
+    -moz-transition: box-shadow 0.2s ease;
+    -o-transition: box-shadow 0.2s ease;
+    transition: box-shadow 0.2s ease;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+a.mdl-card:hover {
+    /* mdl-shadow--16dp */
+    box-shadow:0 16px 24px 2px rgba(0,0,0,.14),0 6px 30px 5px rgba(0,0,0,.12),0 8px 10px -5px rgba(0,0,0,.2)
+}
+
 /* sticky footer */
 
 .mdl-layout__content {
