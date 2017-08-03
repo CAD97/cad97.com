@@ -1,0 +1,22 @@
+{
+  "name": "cad97",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "cad97",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "@types/del": "^2.2.32",
+    "@types/gulp": "^4.0.4",
+    "del": "^3.0.0",
+    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp-mustache": "^3.0.0",
+    "gulp-typescript": "^3.2.1",
+    "typescript": "^2.4.2"
+  },
+  "dependencies": {}
+}
