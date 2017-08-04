@@ -44,6 +44,7 @@ gulp.task("serve-css", () => {
 });
 
 gulp.task("serve-html", () => {
+    paths.mustache.partials.view.delete();
     return gulp.src(paths.mustache.sources)
         .pipe(mustache(paths.mustache.partials.view(), {extension: ".html"}, paths.mustache.partials.view()))
         .pipe(gulp.dest(paths.www))

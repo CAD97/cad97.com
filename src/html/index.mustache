@@ -4,10 +4,17 @@
   <meta charset="UTF-8">
   <title>Hello World!</title>
   {{{head}}}
+  {{{highlightjs}}}
 </head>
 <body>
 
 <p>{{> hello}}</p>
+
+<pre><code class="language-kotlin">readLine()!!.toLowerCase().split(" ").map{fun
+c(c:Char)=Regex("([aeiou]{2,})").findAll(it).fold(0){a,b->a+b.value.count{it==c}}.let{if(it>4)4 else it}
+(('A'..'I')+('K'..'Z'))[c('a')*5+c('o')]}.forEach(::print)</code></pre>
+
+<a href="https://codegolf.stackexchange.com/a/98261/51825">https://codegolf.stackexchange.com/a/98261/51825</a>
 
 </body>
 </html>
