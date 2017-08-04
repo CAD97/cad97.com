@@ -10,10 +10,12 @@
   "license": "CC-BY-SA",
   "private": true,
   "devDependencies": {
+    "@types/browser-sync": "0.0.35",
     "@types/del": "^2.2.32",
     "@types/gulp": "^4.0.4",
     "@types/gulp-less": "0.0.30",
     "@types/memoizee": "^0.4.1",
+    "browser-sync": "^2.18.13",
     "del": "^3.0.0",
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-less": "^3.3.2",
