@@ -5,6 +5,7 @@
   <title>Hello World!</title>
   {{{head}}}
   {{{highlightjs}}}
+  {{{mathjax}}}
 </head>
 <body>
 
@@ -14,7 +15,11 @@
 c(c:Char)=Regex("([aeiou]{2,})").findAll(it).fold(0){a,b->a+b.value.count{it==c}}.let{if(it>4)4 else it}
 (('A'..'I')+('K'..'Z'))[c('a')*5+c('o')]}.forEach(::print)</code></pre>
 
-<a href="https://codegolf.stackexchange.com/a/98261/51825">https://codegolf.stackexchange.com/a/98261/51825</a>
+<p><a href="https://codegolf.stackexchange.com/a/98261/51825">https://codegolf.stackexchange.com/a/98261/51825</a></p>
+
+<p>\[ f (x,y) = { \frac{\Gamma(p_1+p_2+p_3) }{\Gamma(p_1) \Gamma(p_2) \Gamma (p_3) }} x^{p_1-1} y^{p_2-1 }(1-x-y)^{p_3-1} \]</p>
+
+<p><a href="https://math.stackexchange.com/q/2382007">https://math.stackexchange.com/q/2382007</a></p>
 
 </body>
 </html>
