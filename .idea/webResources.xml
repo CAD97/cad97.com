@@ -5,10 +5,7 @@
       <entry url="file://$PROJECT_DIR$">
         <entryData>
           <resourceRoots>
-            <path value="file://$PROJECT_DIR$/src/partials" />
-            <path value="file://$PROJECT_DIR$/src/templates" />
-            <path value="file://$PROJECT_DIR$/src/www" />
-            <path value="file://$PROJECT_DIR$/src/html" />
+            <path value="file://$PROJECT_DIR$/www" />
           </resourceRoots>
         </entryData>
       </entry>

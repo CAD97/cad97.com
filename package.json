@@ -7,14 +7,16 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "cad97",
-  "license": "MIT",
+  "license": "CC-BY-SA",
   "private": true,
   "devDependencies": {
     "@types/del": "^2.2.32",
     "@types/gulp": "^4.0.4",
+    "@types/gulp-less": "0.0.30",
     "@types/memoizee": "^0.4.1",
     "del": "^3.0.0",
     "gulp": "github:gulpjs/gulp#4.0",
+    "gulp-less": "^3.3.2",
     "gulp-mustache": "^3.0.0",
     "gulp-typescript": "^3.2.1",
     "memoizee": "^0.4.5",

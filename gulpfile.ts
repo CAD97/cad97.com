@@ -1,12 +1,14 @@
 import * as del from "del";
 import * as fs from "fs";
 import * as gulp from "gulp";
+import * as less from "gulp-less";
 import * as mustache from "gulp-mustache";
 import * as ts from "gulp-typescript";
 import * as memoize from "memoizee";
 
 const tsProject = ts.createProject("tsconfig.json");
 const paths = {
+    less: ["src/css/**/*.less"],
     mustache: {
         partials: memoize(() => {
             let view: { [id: string]: string } = {};
@@ -17,14 +19,22 @@ const paths = {
             });
             return view;
         }),
-        sources: "src/html/**/*.mustache",
+        sources: ["src/html/**/*.mustache"],
     },
-    ts: "src/js/**/*.ts",
+    ts: ["src/js/**/*.ts"],
     www: "www",
 };
 
 gulp.task("clean", () => {
     return del([paths.www + "/**/*"]);
+});
+
+gulp.task("serve-css", () => {
+    return gulp.src(paths.less)
+        .pipe(less({
+            paths: paths.less,
+        }))
+        .pipe(gulp.dest(paths.www));
 });
 
 gulp.task("serve-html", () => {
@@ -39,5 +49,5 @@ gulp.task("serve-js", () => {
         .pipe(gulp.dest(paths.www));
 });
 
-gulp.task("build", gulp.parallel("serve-html", "serve-js"));
+gulp.task("build", gulp.parallel("serve-css", "serve-html", "serve-js"));
 gulp.task("default", gulp.series("clean", "build"));
