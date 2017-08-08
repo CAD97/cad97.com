@@ -1,3 +1,57 @@
-p {
-  font-family: "Fira Code", monospace;
+@import "color";
+
+.primary {
+  .light {
+    background-color: @primary-light;
+    color: @primary-light-text;
+  }
+  .normal {
+    background-color: @primary;
+    color: @primary-text;
+  }
+  .dark {
+    background-color: @primary-dark;
+    color: @primary-dark-text;
+  }
+}
+
+.secondary {
+  .light {
+    background-color: @secondary-light;
+    color: @secondary-light-text;
+  }
+  .normal {
+    background-color: @secondary;
+    color: @secondary-text;
+  }
+  .dark {
+    background-color: @secondary-dark;
+    color: @secondary-dark-text;
+  }
+}
+
+.text {
+
+  .dark {
+    background-color: @background-light;
+    color: @dark-text-primary;
+    .secondary p {
+      color: @dark-text-secondary;
+    }
+    .disabled p {
+      color: @dark-text-disabled;
+    }
+  }
+
+  .light {
+    background-color: @background-dark;
+    color: @light-text-primary;
+    .secondary p {
+      color: @light-text-secondary;
+    }
+    .disabled p {
+      color: @light-text-disabled;
+    }
+  }
+
 }

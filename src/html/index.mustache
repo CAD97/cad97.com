@@ -2,24 +2,84 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Hello World!</title>
+  <title>Color Test!</title>
   {{{head}}}
-  {{{highlightjs}}}
-  {{{mathjax}}}
 </head>
 <body>
 
-<p>{{> hello}}</p>
+<main>
 
-<pre><code class="language-kotlin">readLine()!!.toLowerCase().split(" ").map{fun
-c(c:Char)=Regex("([aeiou]{2,})").findAll(it).fold(0){a,b->a+b.value.count{it==c}}.let{if(it>4)4 else it}
-(('A'..'I')+('K'..'Z'))[c('a')*5+c('o')]}.forEach(::print)</code></pre>
+  <h1>Color Test</h1>
 
-<p><a href="https://codegolf.stackexchange.com/a/98261/51825">https://codegolf.stackexchange.com/a/98261/51825</a></p>
+  <div class="primary">
+    <h2>Primary Colors</h2>
+    <div class="light">
+      <h3>Light</h3>
+      <p>{{lipsum}}</p>
+    </div>
+    <div class="normal">
+      <h3>Normal</h3>
+      <p>{{lipsum}}</p>
+    </div>
+    <div class="dark">
+      <h3>Dark</h3>
+      <p>{{lipsum}}</p>
+    </div>
+  </div>
 
-<p>\[ f (x,y) = { \frac{\Gamma(p_1+p_2+p_3) }{\Gamma(p_1) \Gamma(p_2) \Gamma (p_3) }} x^{p_1-1} y^{p_2-1 }(1-x-y)^{p_3-1} \]</p>
+  <div class="secondary">
+    <h2>Secondary Colors</h2>
+    <div class="light">
+      <h3>Light</h3>
+      <p>{{lipsum}}</p>
+    </div>
+    <div class="normal">
+      <h3>Normal</h3>
+      <p>{{lipsum}}</p>
+    </div>
+    <div class="dark">
+      <h3>Dark</h3>
+      <p>{{lipsum}}</p>
+    </div>
+  </div>
 
-<p><a href="https://math.stackexchange.com/q/2382007">https://math.stackexchange.com/q/2382007</a></p>
+  <div class="text">
+    <h2>Text Colors</h2>
+
+    <div class="dark">
+      <h3>Dark Text (Light Background)</h3>
+      <div class="primary">
+        <h4>Primary Text</h4>
+        <p>{{lipsum}}</p>
+      </div>
+      <div class="secondary">
+        <h4>Secondary Text</h4>
+        <p>{{lipsum}}</p>
+      </div>
+      <div class="disabled">
+        <h4>Disabled/Hint Text</h4>
+        <p>{{lipsum}}</p>
+      </div>
+    </div>
+
+    <div class="light">
+      <h3>Light Text (Dark Background)</h3>
+      <div class="primary">
+        <h4>Primary Text</h4>
+        <p>{{lipsum}}</p>
+      </div>
+      <div class="secondary">
+        <h4>Secondary Text</h4>
+        <p>{{lipsum}}</p>
+      </div>
+      <div class="disabled">
+        <h4>Disabled/Hint Text</h4>
+        <p>{{lipsum}}</p>
+      </div>
+    </div>
+  </div>
+
+</main>
 
 </body>
 </html>
