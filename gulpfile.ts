@@ -39,6 +39,7 @@ gulp.task("serve-css", () => {
         .pipe(less({
             paths: paths.less,
         }))
+        .on('error', ()=>{})
         .pipe(gulp.dest(paths.www))
         .pipe(browser.stream());
 });
