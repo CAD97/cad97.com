@@ -2,6 +2,7 @@ import * as browsersync from "browser-sync";
 import * as del from "del";
 import * as fs from "fs";
 import * as gulp from "gulp";
+import * as gutil from "gulp-util";
 import * as less from "gulp-less";
 import * as mustache from "gulp-mustache";
 import * as typescript from "gulp-typescript";
@@ -35,11 +36,16 @@ gulp.task("clean", () => {
 });
 
 gulp.task("serve-css", () => {
+    const l = less({
+        paths: paths.less,
+    });
+    l.on('error', (e) => {
+        gutil.log(e);
+        l.end();
+    });
+
     return gulp.src(paths.less)
-        .pipe(less({
-            paths: paths.less,
-        }))
-        .on('error', ()=>{})
+        .pipe(l)
         .pipe(gulp.dest(paths.www))
         .pipe(browser.stream());
 });
