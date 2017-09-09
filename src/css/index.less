@@ -15,21 +15,48 @@ body {
   margin: 0;
 }
 
-header {
+code {
+  font-family: "Fira Code", monospace;
+}
+
+body > header {
   color: @primary-text;
   background-color: @primary;
+  font-size: 2em;
   margin: 0 0 10px 0;
-  padding: 1em 2em;
+  padding: 0.5em 1em;
   box-shadow: 0 10px 20px 0 rgba(0,0,0,0.5);
-
-  * {
-    margin: 0;
-    padding: 0;
-  }
 }
 
 main {
+  margin: 1em auto 1em auto;
+  max-width: 1024px;
   flex: 1;
+
+  section {
+    padding: 1em;
+    margin: 1em;
+    box-shadow: 0 5px 10px 0 rgba(0,0,0,0.5);
+    line-height: 1.5em;
+
+    header {
+      font-size: 1.5em;
+    }
+  }
+}
+
+.cards {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: stretch;
+  //justify-content: space-between;
+
+  section {
+    display: inline-block;
+    margin: 1em;
+    flex: 1;
+    min-width: 270px;
+  }
 }
 
 footer {
@@ -50,5 +77,14 @@ footer {
 
   li {
     margin-left: 1em;
+  }
+
+  button {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
   }
 }
