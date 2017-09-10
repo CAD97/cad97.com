@@ -1,5 +1,5 @@
 function switchTheme() {
-    const bodyClassList = document.getElementsByTagName('body')[0].classList;
+    const bodyClassList = document.body.classList;
     const next = document.getElementById("new-theme")!;
     
     if (bodyClassList.contains('light')) {
