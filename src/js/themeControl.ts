@@ -21,5 +21,3 @@ document.getElementById("switch-theme")!.onclick = function switchTheme() {
 };
 
 })();
-
-

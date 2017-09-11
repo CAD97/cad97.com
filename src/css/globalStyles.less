@@ -1,0 +1,65 @@
+@import "color";
+
+body {
+  color: @light-text-primary;
+  background-color: @background-dark;
+  &.light {
+    color: @dark-text-primary;
+    background-color: @background-light;
+  }
+
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: Roboto, sans-serif;
+  margin: 0;
+}
+
+code {
+  font-family: "Fira Code", monospace;
+}
+
+body > header {
+  color: @primary-text;
+  background-color: @primary;
+  font-size: 2em;
+  margin: 0 0 10px 0;
+  padding: 0.5em 1em;
+  box-shadow: 0 10px 20px 0 rgba(0,0,0,0.5);
+}
+
+main {
+  margin: 1em auto 1em auto;
+  max-width: 1024px;
+  flex: 1;
+}
+
+footer {
+  color: @light-text-primary;
+  background-color: #424242;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  padding: 1em;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-flow: row nowrap;
+  }
+
+  li {
+    margin-left: 1em;
+  }
+
+  button {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+  }
+}
