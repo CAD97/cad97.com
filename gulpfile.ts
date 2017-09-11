@@ -6,7 +6,10 @@ import * as gutil from "gulp-util";
 import * as less from "gulp-less";
 import * as mustache from "gulp-mustache";
 import * as typescript from "gulp-typescript";
+import * as postcss from "gulp-postcss";
+import * as autoprefixer from "autoprefixer";
 import * as memoize from "memoizee";
+import { Transform } from "stream";
 
 const browser = browsersync.create();
 const tsProject = typescript.createProject("tsconfig.json");
@@ -47,6 +50,7 @@ gulp.task("serve-css", () => {
 
     return gulp.src(paths.less)
         .pipe(l)
+        .pipe(postcss([autoprefixer()]) as Transform)
         .pipe(gulp.dest(paths.www))
         .pipe(browser.stream());
 });
