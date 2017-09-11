@@ -17,19 +17,29 @@ main section {
   flex-flow: row wrap;
   align-items: stretch;
 
+  & > * {
+    flex: 1;
+  }
+
   section {
     margin: 1em;
-    flex: 1;
     min-width: 270px;
+    overflow: auto;
+    img {
+      float: right;
+      .light & {
+        filter: invert(1);
+      }
+    }
   }
 
   & > a {
-    *, *:link, *:visited, *:hover, *:active {
-      color: @light-text-primary;
+    &, &:link, &:visited, &:hover, &:active {
+      color: inherit;
       text-decoration: none;
     }
 
-    section {
+    & > section {
       transition: box-shadow 0.2s ease;
       &:hover {
         box-shadow: 0 5px 10px 5px rgba(0, 0, 0, 0.5);
