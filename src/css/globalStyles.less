@@ -40,7 +40,8 @@ footer {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
-  padding: 1em;
+  min-height: 32px;
+  padding: 0.5em 1em;
 
   ul {
     margin: 0;
@@ -51,7 +52,11 @@ footer {
   }
 
   li {
-    margin-left: 1em;
+    margin: auto 0 auto 1em;
+  }
+
+  img {
+    opacity: @icon-light-active;
   }
 
   button {

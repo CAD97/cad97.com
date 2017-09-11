@@ -28,6 +28,7 @@ const paths = {
         sources: ["src/html/**/*.mustache"],
     },
     ts: ["src/js/**/*.ts"],
+    img: ["src/img/**/*"],
     www: "www",
 };
 
@@ -58,6 +59,12 @@ gulp.task("serve-html", () => {
         .pipe(browser.stream());
 });
 
+gulp.task("serve-img", () => {
+    return gulp.src(paths.img)
+        .pipe(gulp.dest(paths.www))
+        .pipe(browser.stream());
+});
+
 gulp.task("serve-js", () => {
     return gulp.src(paths.ts)
         .pipe(tsProject())
@@ -65,7 +72,7 @@ gulp.task("serve-js", () => {
         .pipe(browser.stream());
 });
 
-gulp.task("build", gulp.parallel("serve-css", "serve-html", "serve-js"));
+gulp.task("build", gulp.parallel("serve-css", "serve-html", "serve-js", "serve-img"));
 gulp.task("default", gulp.series("clean", "build", function browserify() {
     browser.init({
         https: true,
@@ -77,5 +84,6 @@ gulp.task("default", gulp.series("clean", "build", function browserify() {
     gulp.watch(paths.less, gulp.parallel("serve-css"));
     gulp.watch(paths.mustache.sources, gulp.parallel("serve-html"));
     gulp.watch(paths.mustache.partials.dir, gulp.parallel("serve-html"));
+    gulp.watch(paths.img, gulp.parallel("serve-img"));
     gulp.watch(paths.ts, gulp.parallel("serve-js"));
 }));
