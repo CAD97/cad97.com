@@ -3,8 +3,9 @@
 main section {
   padding: 1em;
   margin: 1em;
-  box-shadow: 0 5px 10px 0 rgba(0,0,0,0.5);
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.5);
   line-height: 1.5em;
+  border-radius: 0.5em;
 
   header {
     font-size: 1.5em;
@@ -20,5 +21,19 @@ main section {
     margin: 1em;
     flex: 1;
     min-width: 270px;
+  }
+
+  & > a {
+    *, *:link, *:visited, *:hover, *:active {
+      color: @light-text-primary;
+      text-decoration: none;
+    }
+
+    section {
+      transition: box-shadow 0.2s ease;
+      &:hover {
+        box-shadow: 0 5px 10px 5px rgba(0, 0, 0, 0.5);
+      }
+    }
   }
 }
